@@ -1,6 +1,6 @@
 %define	name	clanbomber2
 %define	version	0.9
-%define	release	%mkrel 5
+%define	release	%mkrel 6
 %define	Summary	Clanbomber - free (GPL) Bomberman-like multiplayer game
 
 Summary:	%{Summary}
@@ -13,6 +13,7 @@ Source12:	%{name}.32.png
 Source13:	%{name}.48.png
 Patch8:		clanbomber-1.02a-gcc-3.3.patch.bz2
 Patch10:	clanbomber2-0.9-gcc-3.4.patch.bz2
+Patch11:	clanbomber-1.05-fusionsound10.patch
 URL:		http://clanbomber.sourceforge.net/
 License:	GPL
 Group:		Games/Arcade
@@ -33,6 +34,7 @@ recommended to play ClanBomber with friends (3-8 players are really fun).
 %setup -q
 %patch8 -p1 -b .peroyvind
 %patch10 -p1 -b .tv
+%patch11 -p1 -b .fusion
 #perl -pi -e 's|\@datadir\@|\$(datadir)|' */Makefile.am */*/Makefile.am
 #aclocal-1.7
 
