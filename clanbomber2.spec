@@ -16,6 +16,7 @@ Patch12:	clanbomber2-0.9-x86_64.patch
 URL:		http://clanbomber.sourceforge.net/
 License:	GPL
 Group:		Games/Arcade
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	zlib-devel libhermes-devel
 BuildRequires:	libmikmod-devel libclanlib-sound automake >= 1.7
 BuildRequires:	libfusionsound-devel
