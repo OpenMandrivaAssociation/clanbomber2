@@ -1,6 +1,6 @@
 %define	name	clanbomber2
 %define	version	0.9.1
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 %define	Summary	Clanbomber - free (GPL) Bomberman-like multiplayer game
 
 Summary:	%{Summary}
@@ -20,8 +20,6 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	zlib-devel libhermes-devel
 BuildRequires:	libmikmod-devel libclanlib-sound automake >= 1.7
 BuildRequires:	libfusionsound-devel
-Provides:	clanbomber
-Obsoletes:	clanbomber
 
 %description
 ClanBomber is a free (GPL) Bomberman-like multiplayer game that uses ClanLib, a
