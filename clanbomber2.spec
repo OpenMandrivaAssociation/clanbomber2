@@ -1,6 +1,6 @@
 %define	name	clanbomber2
 %define	version	0.9.1
-%define	release	%mkrel 4
+%define	release	%mkrel 5
 %define	Summary	Clanbomber - free (GPL) Bomberman-like multiplayer game
 
 Summary:	%{Summary}
@@ -28,6 +28,9 @@ for a small game started in September 1998, that has only been started to learn
 how to use ClanLib. But the ClanBomber project has grown into a real game. It
 is fully playable and features Computer controlled bombers, however, it is
 recommended to play ClanBomber with friends (3-8 players are really fun).
+
+Clanbomber2 is a port of ClanBomber on frame buffer.
+For X Window, just use plain legacy ClanBomber.
 
 %prep
 %setup -q
