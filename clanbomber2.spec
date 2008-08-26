@@ -1,6 +1,6 @@
 %define	name	clanbomber2
 %define	version	0.9.1
-%define	release	%mkrel 7
+%define	release	%mkrel 8
 %define	Summary	Clanbomber - free (GPL) Bomberman-like multiplayer game
 
 Summary:	%{Summary}
@@ -14,7 +14,7 @@ Source13:	%{name}.48.png
 Patch8:		clanbomber-1.02a-gcc-3.3.patch.bz2
 Patch12:	clanbomber2-0.9-x86_64.patch
 URL:		http://clanbomber.sourceforge.net/
-License:	GPL
+License:	GPLv2+
 Group:		Games/Arcade
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	zlib-devel libhermes-devel
@@ -36,8 +36,6 @@ For X Window, just use plain legacy ClanBomber.
 %setup -q
 %patch8 -p1 -b .peroyvind
 %patch12 -p1 -b .x86_64
-#perl -pi -e 's|\@datadir\@|\$(datadir)|' */Makefile.am */*/Makefile.am
-#aclocal-1.7
 
 %build
 # (gc) workaround g++ exception bug when -fomit-frame-pointer is set
