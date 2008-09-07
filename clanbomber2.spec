@@ -11,7 +11,8 @@ Source:		http://www.clanbomber.de/files/%{name}-%{version}.tar.bz2
 Source11:	%{name}.16.png
 Source12:	%{name}.32.png
 Source13:	%{name}.48.png
-Patch8:		clanbomber-1.02a-gcc-3.3.patch.bz2
+Patch0: fusionsound_new_api.patch
+Patch8:		clanbomber-1.02a-gcc-3.3.patch
 Patch12:	clanbomber2-0.9-x86_64.patch
 URL:		http://clanbomber.sourceforge.net/
 License:	GPLv2+
@@ -34,6 +35,7 @@ For X Window, just use plain legacy ClanBomber.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch8 -p1 -b .peroyvind
 %patch12 -p1 -b .x86_64
 
