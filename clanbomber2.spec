@@ -1,6 +1,6 @@
 %define	name	clanbomber2
 %define	version	0.9.1
-%define	release	%mkrel 9
+%define	release	%mkrel 10
 %define	Summary	Clanbomber - free (GPL) Bomberman-like multiplayer game
 
 Summary:	%{Summary}
