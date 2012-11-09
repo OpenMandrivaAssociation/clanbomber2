@@ -1,0 +1,22 @@
+--- clanbomber2-0.9/clanbomber/Client.cpp.orig	2007-09-02 09:01:24.000000000 +0100
++++ clanbomber2-0.9/clanbomber/Client.cpp	2007-09-02 09:01:48.000000000 +0100
+@@ -204,7 +204,7 @@
+     int bytes_received=-1;
+     int buf[4096];
+     int bufsize=sizeof(buf);
+-    size_t addr_len=sizeof(struct sockaddr);
++    socklen_t addr_len=sizeof(struct sockaddr);
+     memset((char*)&server_addr, 0, addr_len);
+     int brecv=recvfrom(my_udp_socket, buf, bufsize, 0, (sockaddr*)&server_addr, &addr_len);
+     bytes_received=brecv;
+--- clanbomber2-0.9/clanbomber/Server.cpp.orig	2007-09-02 09:01:29.000000000 +0100
++++ clanbomber2-0.9/clanbomber/Server.cpp	2007-09-02 09:01:37.000000000 +0100
+@@ -295,7 +295,7 @@
+     int bytes_received=-1;
+     int buf[4096];
+     int bufsize=sizeof(buf);
+-    size_t addr_len=sizeof(struct sockaddr);
++    socklen_t addr_len=sizeof(struct sockaddr);
+     memset((char*)&client_addr, 0, addr_len);
+     int brecv=recvfrom(my_udp_socket, buf, bufsize, 0, (sockaddr*)&client_addr, &addr_len);
+     bytes_received=brecv;

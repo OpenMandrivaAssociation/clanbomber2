@@ -1,0 +1,241 @@
+diff -upr clanbomber2-0.9.1.orig/clanbomber/ClanBomber.h clanbomber2-0.9.1/clanbomber/ClanBomber.h
+--- clanbomber2-0.9.1.orig/clanbomber/ClanBomber.h	2007-10-15 16:58:16.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/ClanBomber.h	2008-08-03 20:23:11.000000000 +0300
+@@ -263,7 +263,7 @@ int enter_string( CL_String &string );
+ 
+ 
+ #define DFBCHECK(x...)	{							\
+-				DFBResult err = x;				\
++				DFBResult err = (DFBResult) x;				\
+ 				if (err != DFB_OK) {				\
+ 					cerr <<  __FILE__ << __LINE__  << endl;	\
+ 					DirectFBErrorFatal( #x, err );		\
+diff -upr clanbomber2-0.9.1.orig/clanbomber/Corpse_Part.cpp clanbomber2-0.9.1/clanbomber/Corpse_Part.cpp
+--- clanbomber2-0.9.1.orig/clanbomber/Corpse_Part.cpp	2007-10-15 15:55:56.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/Corpse_Part.cpp	2008-08-03 19:52:16.000000000 +0300
+@@ -43,7 +43,7 @@ void Corpse_Part::act()
+ 			countdown = 0;
+ 			delete_me = true;
+ 		}
+-		opacity = (__u8) min( 255, (int)(255 * countdown) );
++		opacity = (u8) min( 255, (int)(255 * countdown) );
+ 	}
+ 	
+ 	GameObject::act();
+diff -upr clanbomber2-0.9.1.orig/clanbomber/GameObject.cpp clanbomber2-0.9.1/clanbomber/GameObject.cpp
+--- clanbomber2-0.9.1.orig/clanbomber/GameObject.cpp	2007-10-15 15:55:56.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/GameObject.cpp	2008-08-03 19:52:16.000000000 +0300
+@@ -562,7 +562,7 @@ void GameObject::continue_falling()
+ 		fallen_down = true;
+ 		fall_countdown = 0;
+ 	}
+-	opacity_scaled = (__u8)(fall_countdown * 255);
++	opacity_scaled = (u8)(fall_countdown * 255);
+ }
+ 
+ void GameObject::stop(bool by_arrow)
+diff -upr clanbomber2-0.9.1.orig/clanbomber/GameObject.h clanbomber2-0.9.1/clanbomber/GameObject.h
+--- clanbomber2-0.9.1.orig/clanbomber/GameObject.h	2007-10-15 15:55:56.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/GameObject.h	2008-08-03 19:52:16.000000000 +0300
+@@ -137,8 +137,8 @@ protected:
+ 	int offset_x;
+ 	int offset_y;
+ 	/* opacity to blit with */
+-	__u8 opacity;
+-	__u8 opacity_scaled;
++	u8 opacity;
++	u8 opacity_scaled;
+ 	
+ 	float x;
+ 	float y;
+diff -upr clanbomber2-0.9.1.orig/clanbomber/MapTile_Arrow.cpp clanbomber2-0.9.1/clanbomber/MapTile_Arrow.cpp
+--- clanbomber2-0.9.1.orig/clanbomber/MapTile_Arrow.cpp	2007-10-15 16:00:29.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/MapTile_Arrow.cpp	2008-08-03 19:52:16.000000000 +0300
+@@ -71,10 +71,10 @@ void MapTile_Arrow::draw(int addx, int a
+ 
+ void MapTile_Arrow::draw_tiny( int x, int y, float factor )
+ {
+-	__u8 opacity = 255;
++	u8 opacity = 255;
+ 
+ 	if (vanishing) {
+-		opacity = (__u8)(vanish_countdown * 255);
++		opacity = (u8)(vanish_countdown * 255);
+ 	}
+ 
+ 	MapTile::draw_tiny(  x,  y,  factor );
+diff -upr clanbomber2-0.9.1.orig/clanbomber/MapTile.cpp clanbomber2-0.9.1/clanbomber/MapTile.cpp
+--- clanbomber2-0.9.1.orig/clanbomber/MapTile.cpp	2007-10-15 16:00:29.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/MapTile.cpp	2008-08-03 19:52:16.000000000 +0300
+@@ -218,10 +218,10 @@ void MapTile::draw(int addx, int addy)
+ 
+ void MapTile::draw_tiny( int x, int y, float factor )
+ {
+-	__u8 opacity = 255;
++	u8 opacity = 255;
+ 
+ 	if (vanishing) {
+-		opacity = (__u8)(vanish_countdown * 255);
++		opacity = (u8)(vanish_countdown * 255);
+ 	}
+ 
+ 	Resources::Game_maptiles()->put_screen( x, y, factor, factor, sprite_nr, opacity );
+diff -upr clanbomber2-0.9.1.orig/clanbomber/MapTile_Ice.cpp clanbomber2-0.9.1/clanbomber/MapTile_Ice.cpp
+--- clanbomber2-0.9.1.orig/clanbomber/MapTile_Ice.cpp	2007-10-15 16:00:29.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/MapTile_Ice.cpp	2008-08-03 19:52:16.000000000 +0300
+@@ -52,10 +52,10 @@ void MapTile_Ice::draw(int addx, int add
+ 
+ void MapTile_Ice::draw_tiny( int x, int y, float factor )
+ {
+-	__u8 opacity = 255;
++	u8 opacity = 255;
+ 
+ 	if (vanishing) {
+-		opacity = (__u8)(vanish_countdown * 255);
++		opacity = (u8)(vanish_countdown * 255);
+ 	}
+ 
+ 	MapTile::draw_tiny(  x,  y,  factor );
+diff -upr clanbomber2-0.9.1.orig/clanbomber/MapTile_Trap.cpp clanbomber2-0.9.1/clanbomber/MapTile_Trap.cpp
+--- clanbomber2-0.9.1.orig/clanbomber/MapTile_Trap.cpp	2007-10-15 16:00:29.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/MapTile_Trap.cpp	2008-08-03 19:52:16.000000000 +0300
+@@ -90,10 +90,10 @@ void MapTile_Trap::draw(int addx, int ad
+ 
+ void MapTile_Trap::draw_tiny( int x, int y, float factor )
+ {
+-	__u8 opacity = 255;
++	u8 opacity = 255;
+ 
+ 	if (vanishing) {
+-		opacity = (__u8)(vanish_countdown * 255);
++		opacity = (u8)(vanish_countdown * 255);
+ 	}
+ 
+ 	MapTile::draw_tiny(  x,  y,  factor );
+diff -upr clanbomber2-0.9.1.orig/clanbomber/Resources.cpp clanbomber2-0.9.1/clanbomber/Resources.cpp
+--- clanbomber2-0.9.1.orig/clanbomber/Resources.cpp	2007-10-15 16:00:48.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/Resources.cpp	2008-08-03 20:06:33.000000000 +0300
+@@ -94,12 +94,12 @@ Resources::Surface*	Resources::sur_corps
+ IFusionSoundBuffer*	Resources::sfx_splash[2] = { NULL, NULL};
+ 
+ typedef struct fmtChunk {
+-     __u16     encoding;
+-     __u16     channels;                /* 1 = mono, 2 = stereo */
+-     __u32     frequency;               /* One of 11025, 22050, or 44100 Hz */
+-     __u32     byterate;                /* Average bytes per second */
+-     __u16     blockalign;              /* Bytes per sample block */
+-     __u16     bitspersample;           /* One of 8, 12, 16, or 4 for ADPCM */
++     u16     encoding;
++     u16     channels;                /* 1 = mono, 2 = stereo */
++     u32     frequency;               /* One of 11025, 22050, or 44100 Hz */
++     u32     byterate;                /* Average bytes per second */
++     u16     blockalign;              /* Bytes per sample block */
++     u16     bitspersample;           /* One of 8, 12, 16, or 4 for ADPCM */
+ } fmtChunk;
+ 
+ Resources::Resources()
+@@ -586,7 +586,7 @@ int Resources::Surface::get_height()
+ 	return sprite_height;
+ }
+ 
+-void Resources::Surface::put_screen( int x, int y, int frame, __u8 opacity )
++void Resources::Surface::put_screen( int x, int y, int frame, u8 opacity )
+ {
+ 	DFBRectangle rect;
+ 	
+@@ -606,7 +606,7 @@ void Resources::Surface::put_screen( int
+ 	primary->Blit( primary, surface, &rect, x, y );
+ }
+ 
+-void Resources::Surface::put_screen( int x, int y, float scale_x, float scale_y, int frame, __u8 opacity )
++void Resources::Surface::put_screen( int x, int y, float scale_x, float scale_y, int frame, u8 opacity )
+ {
+ 	DFBRectangle sr;
+ 	DFBRectangle dr;
+@@ -664,26 +664,26 @@ IDirectFBSurface* Resources::load_surfac
+ 	return surface;
+ }
+ 
+-DFBResult Resources::sample_read_file_header (int fd)
++DirectResult Resources::sample_read_file_header (int fd)
+ {
+      char buf[12];
+ 
+      if (read (fd, buf, 12) < 12) {
+           cerr <<  "Could not read at least 12 bytes!" << endl;
+-          return DFB_IO;
++          return DR_IO;
+      }
+ 
+      if (buf[0] != 'R' || buf[1] != 'I' || buf[2] != 'F' || buf[3] != 'F') {
+           cerr << "No RIFF header found!" << endl;
+-          return DFB_UNSUPPORTED;
++          return DR_UNSUPPORTED;
+      }
+ 
+      if (buf[8] != 'W' || buf[9] != 'A' || buf[10] != 'V' || buf[11] != 'E') {
+           cerr << "Not a WAVE!" << endl;
+-          return DFB_UNSUPPORTED;
++          return DR_UNSUPPORTED;
+      }
+ 
+-     return DFB_OK;
++     return DR_OK;
+ }
+ 
+ int Resources::sample_read_chunk_header (int fd, char *magic)
+@@ -703,7 +703,7 @@ int Resources::sample_read_chunk_header 
+ 
+ IFusionSoundBuffer* Resources::load_sample(char *filename)
+ {
+-     DFBResult            ret;
++     DirectResult         ret;
+      int                  fd;
+      FSBufferDescription  desc;
+      IFusionSoundBuffer  *buffer;
+@@ -821,7 +821,7 @@ IFusionSoundBuffer* Resources::load_samp
+       
+      ret = sound->CreateBuffer (sound, &desc, &buffer);
+      if (ret) {
+-          DirectFBError ("IFusionSound::CreateBuffer", ret);
++          DirectFBError ("IFusionSound::CreateBuffer", (DFBResult) ret);
+           close (fd);
+           return NULL;
+      }
+@@ -833,10 +833,10 @@ IFusionSoundBuffer* Resources::load_samp
+ 
+ #ifdef WORDS_BIGENDIAN
+      if (fmt.bitspersample == 16) {
+-         __u16 *tmpdata = (__u16*)data;
++         u16 *tmpdata = (u16*)data;
+          len/=2;
+          while (len--) {
+-              __u16 tmp = *tmpdata;
++              u16 tmp = *tmpdata;
+               *tmpdata++ = SWAP16(tmp);
+          }
+      }
+diff -upr clanbomber2-0.9.1.orig/clanbomber/Resources.h clanbomber2-0.9.1/clanbomber/Resources.h
+--- clanbomber2-0.9.1.orig/clanbomber/Resources.h	2007-10-15 16:00:29.000000000 +0300
++++ clanbomber2-0.9.1/clanbomber/Resources.h	2008-08-03 19:52:16.000000000 +0300
+@@ -44,8 +44,8 @@ public:
+ 		
+ 		int get_height();
+ 		
+-		void put_screen( int x, int y, int frame, __u8 opacity = 255 );
+-		void put_screen( int x, int y, float scale_x, float scale_y, int frame, __u8 opacity = 255 );
++		void put_screen( int x, int y, int frame, u8 opacity = 255 );
++		void put_screen( int x, int y, float scale_x, float scale_y, int frame, u8 opacity = 255 );
+ 	
+         void get_rect( int frame, DFBRectangle *ret_rect );
+ 	
+@@ -128,7 +128,7 @@ protected:	
+ 	static IDirectFBSurface* load_surface( char *filename );
+ 	
+ 	static int sample_read_chunk_header( int fd, char *magic);
+-	static DFBResult sample_read_file_header( int fd );
++	static DirectResult sample_read_file_header( int fd );
+ 	static IFusionSoundBuffer* load_sample( char *filename );
+ 
+ 	static IDirectFBFont *fnt_big;
+Only in clanbomber2-0.9.1.orig/debian: changelog
