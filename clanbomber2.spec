@@ -1,12 +1,7 @@
-%define	name	clanbomber2
-%define	version	0.9.1
-%define	release	%mkrel 13
-%define	Summary	Clanbomber - free (GPL) Bomberman-like multiplayer game
-
-Summary:	%{Summary}
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Summary:	Clanbomber - free (GPL) Bomberman-like multiplayer game
+Name:		clanbomber2
+Version:	0.9.1
+Release:	14
 Source:		http://www.clanbomber.de/files/%{name}-%{version}.tar.bz2
 Source11:	%{name}.16.png
 Source12:	%{name}.32.png
@@ -17,8 +12,7 @@ Patch12:	clanbomber2-0.9-x86_64.patch
 URL:		http://clanbomber.sourceforge.net/
 License:	GPLv2+
 Group:		Games/Arcade
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	zlib-devel libhermes-devel
+BuildRequires:	zlib-devel hermes-devel
 BuildRequires:	libmikmod-devel libclanlib-sound automake >= 1.7
 BuildRequires:	libfusionsound-devel
 
@@ -46,7 +40,6 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-omit-frame-pointer" CXXFLAGS="$RPM_OPT_FLAGS 
 make
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
@@ -65,21 +58,7 @@ install -m644 %{SOURCE11} -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
 install -m644 %{SOURCE12} -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
 install -m644 %{SOURCE13} -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING README
 %{_gamesbindir}/*
 %{_gamesdatadir}/*
@@ -162,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 
-* Mon Sep 18 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.9-5mdv2007.0
+* Mon Sep 18 2006 Nicolas LÃ©cureuil <neoclust@mandriva.org> 0.9-5mdv2007.0
 - XDG
 
 * Fri Feb 03 2006 Thierry Vignaud <tvignaud@mandriva.com> 0.9-4mdk
@@ -180,7 +159,7 @@ rm -rf $RPM_BUILD_ROOT
 - new release
 - drop patch9
 
-* Sat Apr 17 2004 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 1.05-1mdk
+* Sat Apr 17 2004 Per Ã˜yvind Karlsen <peroyvind@linux-mandrake.com> 1.05-1mdk
 - 0.5
 - fix build when there's no $DISPLAY available (P9 from debian)
 - fix buildrequires
@@ -193,7 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Sep  2 2003 Guillaume Cottenceau <gc@mandrakesoft.com> 1.02-11mdk
 - fix build deps for 64bit platform
 
-* Wed Jul 23 2003 Per Øyvind Karlsen <peroyvind@sintrax.net> 1.02-10mdk
+* Wed Jul 23 2003 Per Ã˜yvind Karlsen <peroyvind@sintrax.net> 1.02-10mdk
 - rebuild
 - convert icons to png
 - fix missing header (P8)
