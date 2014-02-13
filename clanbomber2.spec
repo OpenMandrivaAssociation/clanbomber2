@@ -14,7 +14,6 @@ Patch8:		clanbomber-1.02a-gcc-3.3.patch
 Patch12:	clanbomber2-0.9-x86_64.patch
 BuildRequires:	hermes-devel
 BuildRequires:	libmikmod-devel
-BuildRequires:	libclanlib2-sound
 BuildRequires:	pkgconfig(fusionsound)
 BuildRequires:	pkgconfig(zlib)
 
