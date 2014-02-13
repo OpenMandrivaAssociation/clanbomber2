@@ -1,7 +1,7 @@
 Summary:	Clanbomber - free (GPL) Bomberman-like multiplayer game
 Name:		clanbomber2
 Version:	0.9.1
-Release:	14
+Release:	15
 License:	GPLv2+
 Group:		Games/Arcade
 Url:		http://clanbomber.sourceforge.net/
@@ -14,7 +14,6 @@ Patch8:		clanbomber-1.02a-gcc-3.3.patch
 Patch12:	clanbomber2-0.9-x86_64.patch
 BuildRequires:	hermes-devel
 BuildRequires:	libmikmod-devel
-BuildRequires:	libclanlib2-devel
 BuildRequires:	libclanlib2-sound
 BuildRequires:	pkgconfig(fusionsound)
 BuildRequires:	pkgconfig(zlib)
