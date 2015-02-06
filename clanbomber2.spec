@@ -1,7 +1,7 @@
 Summary:	Clanbomber - free (GPL) Bomberman-like multiplayer game
 Name:		clanbomber2
 Version:	0.9.1
-Release:	15
+Release:	16
 License:	GPLv2+
 Group:		Games/Arcade
 Url:		http://clanbomber.sourceforge.net/
