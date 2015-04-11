@@ -47,7 +47,7 @@ For X Window, just use plain legacy ClanBomber.
 
 %build
 # (gc) workaround g++ exception bug when -fomit-frame-pointer is set
-export CFLAGS="%{optflags} -fno-omit-frame-pointer" CXXFLAGS="%{optflags} -fno-omit-frame-pointer"
+export CFLAGS="%{optflags} -fno-omit-frame-pointer" CXXFLAGS="%{optflags} -fno-omit-frame-pointer -std=c++11 "
 %configure2_5x --bindir=%{_gamesbindir} --datadir=%{_gamesdatadir}
 make
 
