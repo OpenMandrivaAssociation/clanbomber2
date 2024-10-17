@@ -4,7 +4,7 @@ Version:	0.9.1
 Release:	16
 License:	GPLv2+
 Group:		Games/Arcade
-Url:		http://clanbomber.sourceforge.net/
+Url:		https://clanbomber.sourceforge.net/
 Source0:	http://www.clanbomber.de/files/%{name}-%{version}.tar.bz2
 Source11:	%{name}.16.png
 Source12:	%{name}.32.png
