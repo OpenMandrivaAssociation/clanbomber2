@@ -12,6 +12,11 @@ Source13:	%{name}.48.png
 Patch0:		fusionsound_new_api.patch
 Patch8:		clanbomber-1.02a-gcc-3.3.patch
 Patch12:	clanbomber2-0.9-x86_64.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	hermes-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	pkgconfig(fusionsound)
